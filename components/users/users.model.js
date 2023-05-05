@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const sensorsSchema = new mongoose.Schema(
+const usersSchema = new mongoose.Schema(
     {
         userRole:{
             type: String,
@@ -37,4 +37,4 @@ const sensorsSchema = new mongoose.Schema(
         },
         timestamp: { type: Date, default: Date.now },
     })
-module.exports = mongoose.model('sensors', sensorsSchema);
+module.exports = mongoose.model('users', usersSchema);

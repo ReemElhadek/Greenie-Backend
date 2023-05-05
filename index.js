@@ -1,7 +1,10 @@
 require('dotenv').config();
 const express = require("express");
 const app = express();
-const motorRoutes = require('./components/motors/motor.routes');
+const sensorRoutes = require('./components/sensors/sensors.routes');
+const userRoutes = require('./components/users/users.routes');
+const farmRoutes = require('./components/farm/farm.routes');
+const programsRoutes = require('./components/programs/programs.routes');
 const connect = require('./Database/connect');
 var cors = require('cors');
 const PORT = 8000;
@@ -15,8 +18,11 @@ app.get('/', (req, res) => {
 
 /// GET - POST - UPDATE - DELETE // CRUD Operations
 
-//Motor
-app.use('/api/motor',motorRoutes);
+//Sensors
+app.use('/api/sensor',sensorRoutes);
+app.use('/api/user',userRoutes);
+app.use('/api/farm',farmRoutes);
+app.use('/api/programs',programsRoutes);
 
 const connection = async () => {
     try {

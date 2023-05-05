@@ -1,25 +1,25 @@
-const userModel = require('./users.model');
+const farmModel = require("./famr.model");
 
-var getAllUsers = async (req, res) => {
+var getAllFarms = async (req, res) => {
     try {
-        var data = await userModel.find();
+        var data = await farmModel.find();
         res.status(200).json(data)
     } catch (err) {
         res.status(400).json(err)
     }
 }
 
-var getUserById = async (req, res) => {
+var getFarmById = async (req, res) => {
     try {
         var _id = req.params.id;
-        var data = await userModel.findById({ _id });
+        var data = await farmModel.findById({ _id });
         res.status(200).json(data)
     } catch (err) {
         res.status(400).json(err)
     }
 }
 
-var createNewUser = async (req, res) => {
+var createNewFarm = async (req, res) => {
     try {
 
         var data = await timestamp.create(req.body);
@@ -29,21 +29,21 @@ var createNewUser = async (req, res) => {
     }
 }
 
-var updateUser = async (req, res) => {
+var updateFarm = async (req, res) => {
     try {
         var _id = req.params.id;
         var newData = req.body;
-        var data = await userModel.findByIdAndUpdate({ _id }, newData, { new: true })
+        var data = await farmModel.findByIdAndUpdate({ _id }, newData, { new: true })
         res.status(200).json(data)
     } catch (err) {
         res.status(400).json(err)
     }
 }
 
-var deleteUser = async (req, res) => {
+var deleteFarm = async (req, res) => {
     try {
         var _id = req.params.id;
-        var data = await userModel.findByIdAndDelete(_id);
+        var data = await farmModel.findByIdAndDelete(_id);
         res.status(200).json(data)
     } catch (err) {
         res.status(400).json(err)
@@ -51,9 +51,9 @@ var deleteUser = async (req, res) => {
 }
 
 module.exports = {
-    getAllUsers,
-    getUserById,
-    createNewUser,
-    updateUser,
-    deleteUser
+    getAllFarms,
+    getFarmById,
+    createNewFarm,
+    updateFarm,
+    deleteFarm
 }
