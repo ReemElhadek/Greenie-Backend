@@ -1,25 +1,25 @@
-const userModel = require('./users.model');
+const programModel = require('./programs.model');
 
-var getAllUsers = async (req, res) => {
+var getAllPrograms = async (req, res) => {
     try {
-        var data = await userModel.find();
+        var data = await programModel.find();
         res.status(200).json(data)
     } catch (err) {
         res.status(400).json(err)
     }
 }
 
-var getUserById = async (req, res) => {
+var getProgramById = async (req, res) => {
     try {
         var _id = req.params.id;
-        var data = await userModel.findById({ _id });
+        var data = await programModel.findById({ _id });
         res.status(200).json(data)
     } catch (err) {
         res.status(400).json(err)
     }
 }
 
-var createNewUser = async (req, res) => {
+var createNewProgram = async (req, res) => {
     try {
 
         var data = await timestamp.create(req.body);
@@ -29,21 +29,21 @@ var createNewUser = async (req, res) => {
     }
 }
 
-var updateUser = async (req, res) => {
+var updateProgram = async (req, res) => {
     try {
         var _id = req.params.id;
         var newData = req.body;
-        var data = await userModel.findByIdAndUpdate({ _id }, newData, { new: true })
+        var data = await programModel.findByIdAndUpdate({ _id }, newData, { new: true })
         res.status(200).json(data)
     } catch (err) {
         res.status(400).json(err)
     }
 }
 
-var deleteUser = async (req, res) => {
+var deleteProgram = async (req, res) => {
     try {
         var _id = req.params.id;
-        var data = await userModel.findByIdAndDelete(_id);
+        var data = await programModel.findByIdAndDelete(_id);
         res.status(200).json(data)
     } catch (err) {
         res.status(400).json(err)
@@ -51,9 +51,9 @@ var deleteUser = async (req, res) => {
 }
 
 module.exports = {
-    getAllUsers,
-    getUserById,
-    createNewUser,
-    updateUser,
-    deleteUser
+    getAllPrograms,
+    getProgramById,
+    createNewProgram,
+    updateProgram,
+    deleteProgram
 }
