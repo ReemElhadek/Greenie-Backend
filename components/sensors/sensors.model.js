@@ -1,3 +1,4 @@
+const { ObjectId } = require('mongodb');
 const mongoose = require('mongoose');
 
 const sensorsSchema = new mongoose.Schema(
@@ -7,22 +8,23 @@ const sensorsSchema = new mongoose.Schema(
             enum: ["DHT11","Soil Moisture"],
             required: [true, "please enter type of sensor"]
         },
+        farmID:{
+            type: ObjectId,
+            required: [true,"please enter the farm"]
+        },
         readings:{
             type: [
                 new mongoose.Schema({
                 pressure: {
                     type: Number,
-                    required: true,
                 },
-                Temperature: {
+                temperature: {
                     type: Number,
-                    required: true,
                 },
-                Soil_Moisture:{
+                soil_Moisture:{
                     type: Number,
-                    required: true,
                 },
-                
+                timestamp: { type: Date, default: Date.now },
                 }),
             ],
             default: [],

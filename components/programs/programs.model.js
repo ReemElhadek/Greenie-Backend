@@ -32,6 +32,11 @@ const programsSchema = new mongoose.Schema(
             type: String,
             default: "6 am",
         },
+        hours:{
+            type:[
+                Number
+            ]
+        },
         farms:{
             type: [
                 new mongoose.Schema({
