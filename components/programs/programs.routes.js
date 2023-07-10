@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {
-    getAllPrograms,
+    getAllProgramNames,
     getProgramById,
     createNewProgram,
     updateProgram,
@@ -9,7 +9,7 @@ const {
 } =require('./programs.controller')
 
 //Get 
-router.get('/', getAllPrograms)
+router.get('/', getAllProgramNames)
 router.get('/:id', getProgramById)
 
 //Post

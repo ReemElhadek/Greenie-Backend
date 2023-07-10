@@ -28,9 +28,9 @@ const programsSchema = new mongoose.Schema(
             minLength: 1,
             maxLength: 4,
         },
-        ftotd:{  //First time of the day
-            type: String,
-            default: "6 am",
+        percentageOfSoilMoisture:{  
+            type: Number,
+            default: "0%",
         },
         hours:{
             type:[

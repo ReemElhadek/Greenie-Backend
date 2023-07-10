@@ -24,7 +24,7 @@ app.use('/api/readings', readingsRoutes);
 
 const connection = async () => {
     try {
-      await connect( process.env.mongodbURI_LOCAL );
+      await connect( process.env.mongodbURI_GLOBAL );
       app.listen(PORT, () => {
         console.log(PORT);
       });
