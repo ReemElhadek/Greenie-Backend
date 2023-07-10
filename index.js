@@ -1,11 +1,11 @@
-require('dotenv').config();
 const express = require("express");
 const app = express();
-const sensorRoutes = require('./components/sensors/sensors.routes');
 const userRoutes = require('./components/users/users.routes');
-const farmRoutes = require('./components/farm/farm.routes');
 const programsRoutes = require('./components/programs/programs.routes');
+const readingsRoutes = require('./components/currentReadings/readings.routes');
+const authRoutes = require('./components/auth/auth.routes');
 const connect = require('./Database/connect');
+require('dotenv').config();
 var cors = require('cors');
 const PORT = 8000;
 app.use(cors());
@@ -17,18 +17,16 @@ app.get('/', (req, res) => {
 });
 
 /// GET - POST - UPDATE - DELETE // CRUD Operations
-
-//Sensors
-app.use('/api/sensor',sensorRoutes);
-app.use('/api/user',userRoutes);
-app.use('/api/farm',farmRoutes);
-app.use('/api/programs',programsRoutes);
+app.use('/api/user', userRoutes);
+app.use("/auth", authRoutes);
+app.use('/api/programs', programsRoutes);
+app.use('/api/readings', readingsRoutes);
 
 const connection = async () => {
     try {
-      await connect( process.env.mongodbURI_GLOBAL );
+      await connect( process.env.mongodbURI_LOCAL );
       app.listen(PORT, () => {
-        console.log(PORT)
+        console.log(PORT);
       });
     } catch (error) {
     }
