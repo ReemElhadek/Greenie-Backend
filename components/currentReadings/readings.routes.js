@@ -9,8 +9,8 @@ const {
 
 //Get 
 // router.get('/', GetAllReadings)
-router.get('/:id', GetReadingsById)
-router.get('/', GetLastReadings)
+// router.get('/:id', GetReadingsById)
+router.get('/:key', GetLastReadings)
 
 //Delete
 router.delete('/:id', DeleteReadings)

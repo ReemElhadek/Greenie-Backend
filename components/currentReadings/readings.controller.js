@@ -1,9 +1,6 @@
 const ReadingsSchema = require('./readings.model');
 const axios = require('axios');
-const headers = {
-    'X-AIO-Key': 'aio_tjHR55REtamEQtxHV7rRdj3LvMyB',
-    'Content-Type': 'application/json'
-};
+
 
 //show all readings 
 
@@ -20,7 +17,13 @@ const GetAllReadings = async (req, res) => {
 
 const GetLastReadings = async (req, res) => {
     try {
-        const responseTemp = await axios.get('https://io.adafruit.com/api/v2/Nada_Essam/feeds?x-aio-key=aio_tjHR55REtamEQtxHV7rRdj3LvMyB/data/last', { headers });
+        const key = req.params.key;
+        console.log(key);
+        const headers = {
+            'X-AIO-Key': `${key}`,
+            'Content-Type': 'application/json'
+        };
+        const responseTemp = await axios.get(`https://io.adafruit.com/api/v2/Nada_Essam/feeds?x-aio-key=${key}/data/last`, { headers });
         var responseTempData = responseTemp.data;
         let handledRes = await handleResponse(responseTempData);
         ReadingsSchema.create(handledRes);
