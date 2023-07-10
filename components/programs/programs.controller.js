@@ -2,7 +2,7 @@ const programModel = require('./programs.model');
 
 const getAllProgramNames = async (req, res) => {
     try {
-        var data = await programModel.find();
+        var data = await programModel.find({},{name:1});
         res.status(200).json(data)
     } catch (err) {
         res.status(400).json(err)
@@ -21,9 +21,15 @@ const getProgramById = async (req, res) => {
 
 const createNewProgram = async (req, res) => {
     try {
-
-        var data = await programModel.create(req.body);
-        res.status(200).json(data);
+        var filteredData = {
+            "name": req.body.name,
+            "startAngle": req.body.startEndAngle.split(":")[0],
+            "endAngle": req.body.startEndAngle.split(":")[1],
+            "percentageOfSoilMoisture": req.body.percentageofsoilmoisture,
+            "times": req.body.times
+        };
+        var data = await programModel.create(filteredData);
+        res.status(200).json(filteredData);
     } catch (err) {
         res.status(400).json(err)
     }

@@ -6,17 +6,9 @@ const programsSchema = new mongoose.Schema(
             type: String,
             required: [true, "please enter an appropriate name"]
         },
-        water:{
-            type: Number,
-            required: [true, "please enter amount of water"]
-        },
-        motorSpeed:{
-            type:Number,
-            required: [true, 'Please provide an appropriate Motor Speed'],
-        },
         startAngle:{
             type:Number,
-            default: 0
+            required: [true, 'Please provide an appropriate Start Speed']
         },
         endAngle:{
             type:Number,
@@ -29,8 +21,8 @@ const programsSchema = new mongoose.Schema(
             maxLength: 4,
         },
         percentageOfSoilMoisture:{  
-            type: Number,
-            default: "0%",
+            type: String,
+            required: [true, 'Please provide the percentage Of Soil Moisture Needed'],
         },
         hours:{
             type:[
