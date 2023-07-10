@@ -18,7 +18,6 @@ const GetAllReadings = async (req, res) => {
 const GetLastReadings = async (req, res) => {
     try {
         const key = req.params.key;
-        console.log(key);
         const headers = {
             'X-AIO-Key': `${key}`,
             'Content-Type': 'application/json'
