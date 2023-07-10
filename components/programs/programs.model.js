@@ -37,17 +37,6 @@ const programsSchema = new mongoose.Schema(
                 Number
             ]
         },
-        farms:{
-            type: [
-                new mongoose.Schema({
-                farmIDs: {
-                    type: mongoose.Types.ObjectId,
-                    ref: 'farms',
-                    required: true,
-                },
-                }),
-            ]
-        },
         timestamp: { type: Date, default: Date.now },
     })
 module.exports = mongoose.model('programs', programsSchema);

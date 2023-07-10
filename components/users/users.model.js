@@ -2,18 +2,9 @@ const mongoose = require('mongoose');
 
 const usersSchema = new mongoose.Schema(
     {
-        userRole:{
-            type: String,
-            enum: ["Owner","Engineer", "Admin"],
-            required: [true, "please enter role of User"]
-        },
-        fName:{
+        uName:{
             type:String,
-            required: [true, 'Please provide an appropriate First Name'],
-        },
-        lName:{
-            type:String,
-            required: [true, 'Please provide an appropriate Last Name'],
+            required: [true, 'Please provide an appropriate your Name'],
         },
         email:{
             type:String,
@@ -24,17 +15,21 @@ const usersSchema = new mongoose.Schema(
             minLength: [6, 'Enter a password no less than 6 characters'],
             required: [true, 'Please provide an appropriate password'],
         },
-        farms:{
-            type: [
-                new mongoose.Schema({
-                farmIDs: {
-                    type: mongoose.Types.ObjectId,
-                    ref: 'farms',
-                    required: true,
-                },
-                }),
-            ]
+        fName:{
+            type:String,
+            required: [true, 'Please provide an appropriate farm Name'],
         },
-        timestamp: { type: Date, default: Date.now },
+
+        fLocation:{
+            type:String,
+            required: [true, 'Please enter your farm location'],
+        },
+    
+        userRole:{
+            type: String,
+            enum: ["Owner","Engineer"],
+            // required: [true, "please enter role of User"]
+        },
+    timestamp: { type: Date, default: Date.now },
     })
 module.exports = mongoose.model('users', usersSchema);
