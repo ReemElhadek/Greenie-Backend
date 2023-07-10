@@ -1,6 +1,6 @@
 const programModel = require('./programs.model');
 
-var getAllPrograms = async (req, res) => {
+const getAllProgramNames = async (req, res) => {
     try {
         var data = await programModel.find();
         res.status(200).json(data)
@@ -9,7 +9,7 @@ var getAllPrograms = async (req, res) => {
     }
 }
 
-var getProgramById = async (req, res) => {
+const getProgramById = async (req, res) => {
     try {
         var _id = req.params.id;
         var data = await programModel.findById({ _id });
@@ -19,7 +19,7 @@ var getProgramById = async (req, res) => {
     }
 }
 
-var createNewProgram = async (req, res) => {
+const createNewProgram = async (req, res) => {
     try {
 
         var data = await programModel.create(req.body);
@@ -29,7 +29,7 @@ var createNewProgram = async (req, res) => {
     }
 }
 
-var updateProgram = async (req, res) => {
+const updateProgram = async (req, res) => {
     try {
         var _id = req.params.id;
         var newData = req.body;
@@ -40,7 +40,7 @@ var updateProgram = async (req, res) => {
     }
 }
 
-var deleteProgram = async (req, res) => {
+const deleteProgram = async (req, res) => {
     try {
         var _id = req.params.id;
         var data = await programModel.findByIdAndDelete(_id);
@@ -51,7 +51,7 @@ var deleteProgram = async (req, res) => {
 }
 
 module.exports = {
-    getAllPrograms,
+    getAllProgramNames,
     getProgramById,
     createNewProgram,
     updateProgram,
