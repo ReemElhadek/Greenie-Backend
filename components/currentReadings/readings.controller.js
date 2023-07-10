@@ -38,27 +38,21 @@ const handleResponse = async (response) => {
     let temp = await response.find(o =>
         o.name === 'Temperature'
     );
-
     let hum = await response.find(o =>
         o.name === 'Humidity'
     );
-
     let Soil1 = await response.find(o =>
         o.name === 'SoilMoisture'
     );
-
     let Soil2 = await response.find(o =>
         o.name === 'SoilMoisture1'
     );
-
     let mod = await response.find(o =>
         o.name === 'SytemMod'
     );
-
     let stop = await response.find(o =>
         o.name === 'StopSytm'
     );
-
     let motor = await response.find(o =>
         o.name === 'MotorsOn'
     );
@@ -142,9 +136,5 @@ module.exports = {
     GetAllReadings,
     GetReadingsById,
     DeleteReadings,
-    GetLastReadings,
-    getLocation,
-    getPlant,
-    storePlant,
-    storeLocation,
+    GetLastReadings
 }
