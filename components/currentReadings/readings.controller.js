@@ -22,7 +22,7 @@ const GetLastReadings = async (req, res) => {
             'X-AIO-Key': `${key}`,
             'Content-Type': 'application/json'
         };
-        const responseTemp = await axios.get(`https://io.adafruit.com/api/v2/Nada_Essam/feeds?x-aio-key=${key}/data/last`, { headers });
+        const responseTemp = await axios.get(`https://io.adafruit.com/api/v2/Nada_Essam/feeds?x-aio-key=${key}`, { headers });
         var responseTempData = responseTemp.data;
         let handledRes = await handleResponse(responseTempData);
         ReadingsSchema.create(handledRes);
@@ -44,10 +44,10 @@ const handleResponse = async (response) => {
         o.name === 'Humidity'
     );
     let Soil1 = await response.find(o =>
-        o.name === 'SoilMoisture'
+        o.name === 'SoilMoisture_Reference'
     );
     let Soil2 = await response.find(o =>
-        o.name === 'SoilMoisture1'
+        o.name === 'SoilMoisture_Reference1'
     );
     let mod = await response.find(o =>
         o.name === 'SytemMod'
