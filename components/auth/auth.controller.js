@@ -4,15 +4,16 @@ const User = require("../users/users.model");
 
 // auth controller for registeration
 const register = async(req, res, next) => {
+    console.log(req.body);
 
     const salt = await bcrypt.genSalt();
-    const passwordHash = await bcrypt.hash(req.body.password,salt);
+    const passwordHash = await bcrypt.hash(req.body[4],salt);
 
     let user = new User({
-        uName: req.body.uName,
-        email: req.body.email,
-        fName: req.body.fName,
-        fLocation: req.body.fLocation,
+        uName: req.body[0],
+        email: req.body[1],
+        fName: req.body[2],
+        fLocation: req.body[3],
         password: passwordHash
     })
     user.save()
@@ -32,10 +33,10 @@ const register = async(req, res, next) => {
 //auth controller for login 
 
 const login = (req, res, next) => {
-    var eadd = req.body.email
-    var password = req.body.password
+    var username = req.body[0]
+    var password = req.body[2]
 
-    User.findOne({ $or: [{ email: eadd }] })
+    User.findOne({ $or: [{ uName: username }] })
         .then(user => {
             if (user) {
                 bcrypt.compare(password, user.password, function (err, result) {
